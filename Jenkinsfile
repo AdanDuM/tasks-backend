@@ -53,7 +53,7 @@ pipeline {
         }
         stage ('Functional Test') {
             steps {
-                dir('funtional-test') {
+                dir('functional-test') {
                     git branch: 'main', credentialsId: 'github_login', url: 'https://github.com/AdanDuM/tasks-functional-test'
                     bat 'mvn test'
                 }
@@ -68,7 +68,7 @@ pipeline {
         stage ('Health Check') {
             steps {
                 sleep(5) {
-                    dir('funtional-test') {
+                    dir('functional-test') {
                         bat 'mvn verify -Dskip.surefire.tests'
                     }
                 }
